@@ -6,15 +6,18 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{listings}
 \usepackage{pdfpages}
+\usepackage{minted}
 
 
+%
+% Begin Document
+%
 \begin{document}
 
 % TODO: Add date
 % Cover Page
-\includepdf[page=-]{End_Assessment_Front_Page_HYXC3.pdf}
+\includepdf[pages=-]{End_Assessment_Front_Page_HYXC3.pdf}
 
 
 %
@@ -120,6 +123,11 @@ TODO
 
 \subsection*{4(f)}
 TODO
+
+\begin{listing}
+\inputminted[linenos]{python}{question_4f.py}
+\caption{Question 4f}
+\end{listing}
 
 
 %
