@@ -27,12 +27,12 @@ training_op = optimizer.minimize(mse)
 
 init = tf.global_variables_initializer()
 
-with
-tf.Session() as sess:
+with tf.Session() as sess:
     sess.run(init)
     for epoch in range(n_epochs):
         if epoch % 100 == 0:
-            print("Epoch", epoch, "MSE=", mse.eval()) sess.run(training_op)
+            print("Epoch", epoch, "MSE=", mse.eval())
+            sess.run(training_op)
     best_theta = theta.eval()
 
 
