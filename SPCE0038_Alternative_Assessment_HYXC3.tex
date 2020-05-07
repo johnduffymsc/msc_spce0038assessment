@@ -30,7 +30,15 @@
 \section*{Question 1}
 
 \subsection*{1(a)}
-Referring to the diagram of the Basic Logistic Unit on the following page:
+With reference to the diagram of the basic \emph{logistic unit} on the following page:
+
+The input vector $\mathbf{x}$ is the input to the \emph{logistic unit}.
+
+Each input ${x}_i$ has an associated weight $\theta_i$. The weights are set to a random value prior to \emph{training}. The \emph{training} process determines these weights.
+
+The product of each input $x_i$ and weight $\theta_i$ is summed to produce a weighted sum $z$.
+
+The non-linear activation function $a$ then acts upon $z$ to produce the \emph{logisitc unit} output $h_\theta(x)$, $h_\theta(x) = a(z)$.
 
 \includepdf[angle=+90]{question_1a.pdf}
 
@@ -49,7 +57,7 @@ Referring to the diagram of the Basic Logistic Unit on the following page:
 \subsection*{1(f)}
 Artificial Neural Networks (ANNs) are described as \emph{shallow} or \emph{deep}, and \emph{wide} or \emph{narrow}. \emph{shallow} or \emph{deep} refers to the number of layers in the network, and \emph{wide} or \emph{narrow} refers to the number of nodes in each layer.
 
-The \emph{credit assignment path}, or CAP, of a neural network is a measure of the number of data transformations that occur as data passes through the network. For \emph{feed-forward} networks the CAP is the number of \emph{hidden layers} plus one.
+The \emph{credit assignment path}, the CAP, of a neural network is a measure of the number of data transformations that occur as data passes through the network. For \emph{feed-forward} networks the CAP is the number of \emph{hidden layers} plus one.
 
 A \emph{deep} neural network is generally considered to be a network with multiple layers and a CAP $>$ 2.
 
