@@ -29,6 +29,7 @@
 %
 \section*{Question 1}
 
+% Subsection 1(a)
 \subsection*{1(a)}
 With reference to the diagram of the basic \emph{logistic unit} on the following page:
 
@@ -40,20 +41,48 @@ The product of each input $x_i$ and weight $\theta_i$ is summed to produce a wei
 
 The non-linear activation function $a$ then acts upon $z$ to produce the \emph{logisitc unit} output $h_\theta(x)$, $h_\theta(x) = a(z)$.
 
+% Subsection 1(b)
+\subsection*{1(b)}
+
+Consider the diagram of Question 1(a).
+
+The weighted sum of the inputs, $z$, is:
+
+\begin{equation}
+z = \sum_{j=1}^{n}\theta_j x_j = \theta^T x
+\end{equation}
+
+where $x_i$ is the $i^{th}$ element of input vector $\mathbf{x}$ of length $n$, and $\theta_i$ is the associated \emph{weight}. 
+
+And, the output from the \emph{logistic unit}, $h_\theta(x)$, is:
+
+\begin{equation}
+h_\theta(x) = a(z)
+\end{equation}
+
+where $a$ is a non-linear \emph{activation function}.
+
+% Subsection 1(a) - diagram
 \includepdf[angle=+90]{question_1a.pdf}
 
-\subsection*{1(b)}
-\hl{TODO}
-
+% Subsection 1(c)
 \subsection*{1(c)}
+See diagram on following page.
+
+% Subsection 1(d)
+\subsection*{1(d)}
+Consider the diagram of Question 1(c):
+
+
+
+% Subsection 1(c) - diagram
 \includepdf[angle=+90]{question_1c.pdf}
 
-\subsection*{1(d)}
-\hl{TODO}
-
+% Subsection 1(e)
 \subsection*{1(e)}
 \hl{TODO}
 
+% Subsection 1(f)
 \subsection*{1(f)}
 Artificial Neural Networks (ANNs) are described as \emph{shallow} or \emph{deep}, and \emph{wide} or \emph{narrow}. \emph{shallow} or \emph{deep} refers to the number of layers in the network, and \emph{wide} or \emph{narrow} refers to the number of nodes in each layer.
 
@@ -61,6 +90,7 @@ The \emph{credit assignment path}, the CAP, of a neural network is a measure of 
 
 A \emph{deep} neural network is generally considered to be a network with multiple layers and a CAP $>$ 2.
 
+% Subsection 1(g)
 \subsection*{1(g)}
 \hl{TODO}
 
