@@ -39,7 +39,7 @@ Each input ${x}_i$ has an associated weight $\theta_i$. The weights are set to a
 
 The product of each input $x_i$ and weight $\theta_i$ is summed to produce a weighted sum $z$.
 
-The non-linear activation function $a$ then acts upon $z$ to produce the \emph{logisitc unit} output $h_\theta(x)$, $h_\theta(x) = a(z)$.
+The output, $h_\theta(x)$, is the the non-linear \emph{activation function}, $h$, applied to $z$.
 
 % Subsection 1(b)
 \subsection*{1(b)}
@@ -57,10 +57,10 @@ where $x_i$ is the $i^{th}$ element of input vector $\mathbf{x}$ of length $n$, 
 And, the output from the \emph{logistic unit}, $h_\theta(x)$, is:
 
 \begin{equation}
-h_\theta(x) = a(z)
+h_\theta(x) = h(z)
 \end{equation}
 
-where $a$ is a non-linear \emph{activation function}.
+where $h$ is a non-linear \emph{activation function}.
 
 % Subsection 1(a) - diagram
 \includepdf[angle=+90]{question_1a.pdf}
@@ -71,9 +71,31 @@ See diagram on following page.
 
 % Subsection 1(d)
 \subsection*{1(d)}
-Consider the diagram of Question 1(c):
+Consider the diagram of Question 1(c).
 
+Firstly, consider the data transformation from the input vector $\mathbf{x}$ to the hidden layer. We now need two indices, one for the input vector elements, and one for the \emph{hidden layer} nodes. We will use $i$ for the input vector index, and $j$ for the \emph{hidden layer} nodes.
 
+The weighted sum of the inputs at the $j^{th}$ \emph{hidden layer} node is:
+
+\begin{equation}
+z_j = \sum_{i=1}^{n}\theta_{ij} x_i
+\end{equation}
+
+where $\theta_{ij}$ is the weight between input element $i$ and \emph{hidden layer} node $j$, and $n$ is the length of the input vector $\mathbf{x}$.
+
+Secondly, the output from each \emph{hidden layer} node is the non-linear \emph{activation function}, $h$, applied to each $z_j$:
+
+\begin{equation}
+h_{\theta j}(x) = h(z_j)
+\end{equation}
+
+ And finally, the output from the whole network, $h_\Theta(x)$ is the sum of the \emph{hidden layer} outputs:
+ 
+\begin{equation}
+h_\Theta(x) = \sum_{j=1}^{m}h_{\theta j}(x)
+\end{equation}
+
+where $m$ is the number of \emph{hidden layer} nodes.
 
 % Subsection 1(c) - diagram
 \includepdf[angle=+90]{question_1c.pdf}
