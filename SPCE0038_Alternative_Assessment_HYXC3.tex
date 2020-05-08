@@ -217,6 +217,16 @@ The \emph{Nesterov Accelerated Gradient} algorithm is an enhancement to the \emp
 % Subsection 2(e)
 \subsection*{2(e)}
 
+For optimisation problems where the \emph{objective function} has circular contours the negative gradient always points towards the \emph{objective function} minimum. This means that for an iterative process such as \emph{Gradient Descent} the steps are always in the direction of the minimum. This produces swift convergence to the minimum.
+
+For an elongated \emph{objective function}, with steep sides, a narrow valley, and a bend in the valley, the negative gradient will not point towards the \emph{objective function} minimum if the current value of $\theta$ is at the opposite end of the valley. Large steps will be taken offset from the minimum direction. This will reduce the convergence rate. And where the negative gradient is the steepest is where the largest offset steps will be taken. This phenomena is observed for \emph{objective functions} with non-circular contours. 
+
+The \emph{AdaGrad} algorithm addresses this problem by reducing the learning rate where the negative gradient is steepest. This reduces the step size away from the minima. Where the negative gradient is less steep the \emph{learning rate} is reduced by a lesser amount, preserving the step size towards the minimum.
+
+The \emph{AdaGrad} algorithm uses what is called an \emph{adaptive learning rate}. An advantage of this during \emph{training} is that less tuning of the learning rate $\alpha$ is required, as this is now ``self-tuning".
+
+There is a danger though that the \emph{learning rate} will be reduced too much, and the minimisation process comes to a stop before reaching the minimum. This is the reason why \emph{AdaGrad} is not generally used to train deep \emph{neural networks}.
+ 
 % Subsection 2(f)
 \subsection*{2(f)}
 
