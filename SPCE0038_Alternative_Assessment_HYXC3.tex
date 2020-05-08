@@ -245,8 +245,24 @@ From \emph{momentum} optimisation, \emph{Adam} borrows the idea of an exponentia
 
 And from \emph{RMSProp}, \emph{Adam} borrows the idea of an exponential decay of previous gradients squared.
 
+Because of its performance, \emph{Adam} is a standard algorithm for training deep neural networks.
+
 % Subsection 2(h)
 \subsection*{2(h)}
+
+With reference to the diagram of \emph{Dropout Regularisation} on the following page.
+
+Deep neural networks can be prone to overfitting. \emph{Regularisation} is a method of avoiding overfitting, and \emph{Dropout Regularisation} is one such method.
+
+In \emph{Dropout Regularisation}, at every \emph{training} iteration every node, including the input nodes but excluding the output nodes, has a probability $p$ of being \emph{dropped}. When \emph{dropped} the output from the node is zero. The \emph{dropout rate} $p$ is typically 10\% to 50\%. On completion of training no nodes are \emph{dropped}.
+
+Surprisingly, this method works, even though it would appear that useful information is being destroyed/ignored!
+
+One way of looking at it is that the remaining nodes (the nodes that haven't been \emph{dropped}) have to work harder. And somehow have an enhanced memory or functional ability after training. The reliance on neighbouring nodes is reduced, and each node has to be more effective.
+
+There is one factor that needs to be considered when moving from \emph{training} to \emph{testing}. During \emph{training}, with a \emph{dropout rate} of 50\%, say. There will be approximately 50\% less inputs nodes. Therefore during \emph{testing}, when no nodes are dropped, the input signal will be twice as strong. To account for this, each node's input weights are factored by $1 - p$. 
+
+\includepdf[angle=+90]{question_2h.pdf}
 
 
 %
