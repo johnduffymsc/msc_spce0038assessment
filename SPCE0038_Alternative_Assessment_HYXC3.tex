@@ -169,7 +169,7 @@ where $\alpha$ is the \emph{learning rate}.
 
 At each step the process ``advances" towards the minimum by the step size $- \alpha\nabla_\theta C(\theta)$, which uses the \emph{current} gradient.
 
-The \emph{Momentum Optimisation Algorithm} introduces the idea of including \emph{previous} gradients into the step size.  At each step the \emph{current} gradient is summed into a momentum term, $m$ (remember we use the negative gradient):
+The \emph{Momentum Optimisation Algorithm} introduces the idea of including \emph{previous} gradients into the step size.  At each step the \emph{current} gradient is summed into a momentum term, $m$, which includes \emph{previous} gradients (remember we use the negative gradient):
 
 \begin{equation}
 m^{i+1} = \beta m^i - \alpha\nabla_\theta C(\theta)
