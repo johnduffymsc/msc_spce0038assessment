@@ -136,7 +136,20 @@ Deep networks provide a powerful representational framework because they have th
 \clearpage\section*{Question 2}
 
 \subsection*{2(a)}
-\hl{TODO}
+
+\emph{Gradient Descent} algorithms attempt to find the parameters $\theta$ which minimise the cost function $C(\theta)$ over the \emph{training set} using an iterative process:
+
+\begin{equation}
+\theta^{i+1} = \theta^i - \alpha\nabla_\theta C(\theta)
+\end{equation}
+
+where $\alpha$ is the \emph{learning rate}.
+
+\emph{Batch Gradient Descent} uses the entire \emph{training set} at each iteration to calculate the gradient partial derivatives, $\nabla_\theta C(\theta)$. This produces accurate values for the partial derivatives, but is potentially slow for large \emph{training sets}.
+
+\emph{Stochastic Gradient Descent} uses a random sub-set of the \emph{training set} at each iteration to calculate the gradient partial derivatives, $\nabla_\theta C(\theta)$. This is faster than \emph{Batch Gradient Descent}, but can produce erratic values for the partial derivatives. 
+
+For \emph{convex} cost functions \emph{Batch Gradient Descent} will always converge to the \emph{local minima} which is also the \emph{global minima}. This is not the case for \emph{non-convex} cost functions, where \emph{local minima} are not necessarily \emph{global minima}. A bad choice of $\theta^0$ may result in \emph{Batch Gradient Descent} getting ``stuck" in a \emph{local minima}. Because the gradient partial derivatives of \emph{Stochastic Gradient Descent} are erratic, this provides a mechanism of ``jumping out of" a \emph{local minima} and improves the probability of finding the \emph{global minima}.
 
 \subsection*{2(b)}
 \hl{TODO}
