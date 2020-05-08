@@ -169,7 +169,7 @@ where $\alpha$ is the \emph{learning rate}.
 
 At each step the process ``advances" towards the minimum by the step size $- \alpha\nabla_\theta C(\theta)$, which uses the \emph{current} gradient.
 
-The \emph{Momentum Optimisation Algorithm} introduces the idea of including \emph{previous} gradients into the step size.  At each step the \emph{current} gradient is summed into a momentum term, $m$, which includes \emph{previous} gradients (remember we use the negative gradient):
+The \emph{Momentum Optimisation} algorithm introduces the idea of including \emph{previous} gradients into the step size.  At each step the \emph{current} gradient is summed into a momentum term $m$, which includes \emph{previous} gradients (remember we use the negative gradient):
 
 \begin{equation}
 m^{i+1} = \beta m^i - \alpha\nabla_\theta C(\theta)
@@ -185,8 +185,34 @@ The momentum $m$ is then used to update $\theta$:
 
 The result is that we now have an \emph{acceleration} towards the minimum.
 
+This algorithm may result in an overshoot and oscillation before stabilising at the minimum.  
+
 % Subsection 2(d)
 \subsection*{2(d)}
+
+Consider the momentum update equation of the \emph{Momentum Optimisation} algorithm:
+
+\begin{equation}
+m^{i+1} = \beta m^i - \alpha\nabla_\theta C(\theta)
+\end{equation}
+
+This uses the gradient at the current value of $\theta$.
+
+However, the momentum $m$ is pointing in the general direction of the cost function minimum, so it makes sense to use a point further along in this direction, $\theta + \beta m^i$, to calculate the gradient, as this will be already closer to the minimum:
+
+\begin{equation}
+m^{i+1} = \beta m^i - \alpha\nabla_\theta C(\theta + \beta m^i)
+\end{equation}
+ 
+This is called the \emph{Nesterov Accelerated Gradient} algorithm.
+ 
+$\theta$ is updated as per the \emph{Momentum Optimisation}  algorithm:
+   
+\begin{equation}
+\theta^{i+1} = \theta^i + m
+\end{equation}
+
+The \emph{Nesterov Accelerated Gradient} algorithm is an enhancement to the \emph{Momentum Optimisation} algorithm, which can result in a significant increase in speed, and can reduce the overshoot and oscillations previously mentioned. 
 
 % Subsection 2(e)
 \subsection*{2(e)}
