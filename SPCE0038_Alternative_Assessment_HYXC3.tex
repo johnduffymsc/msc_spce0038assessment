@@ -152,7 +152,8 @@ where $\alpha$ is the \emph{learning rate}.
 For \emph{convex} cost functions \emph{Batch Gradient Descent} will always converge to the \emph{local minima} which is also the \emph{global minima}. This is not the case for \emph{non-convex} cost functions, where \emph{local minima} are not necessarily \emph{global minima}. A bad choice of $\theta^0$ may result in \emph{Batch Gradient Descent} getting ``stuck" in a \emph{local minima}. Because the gradient partial derivatives of \emph{Stochastic Gradient Descent} are erratic, this provides a mechanism of ``jumping out of" a \emph{local minima} and improves the probability of finding the \emph{global minima}.
 
 \subsection*{2(b)}
-\hl{TODO}
+
+When attempting to find the minimum of a cost function using \emph{Stochastic Gradient Descent}, the iterative process ``jumps'' around the minimum, and it is difficult to determine when a minimum has been reached. For this reason alternative optimisation algorithms are typically considered for training.
 
 \subsection*{2(c)}
 \hl{TODO}
