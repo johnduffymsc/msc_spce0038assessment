@@ -349,16 +349,25 @@ In \emph{supervised learning}, a \emph{classification} problem is one which requ
 \clearpage\section*{Question 5}
 
 \subsection*{5(a)}
-\hl{TODO}
+
+Data sets can have many features, sometimes too many. \emph{Dimensionality reduction} is the process of reducing the dimensions to a manageable size. \emph{Principal Component Analysis}, PCA, is a method to perform \emph{dimensionality reduction}.
+
+PCA uses the idea that the dimensions with the most variance hold the most information.
+
+PCA finds the axis in the data set with the most variance. This is called the first \emph{Principle Component, PC}. PCA then finds subsequent PCs orthogonal to previous ones containing the remaining variance, as many as there are dimensions. This is done using Singular Value Decomposition (SVD) of the co-variance of the data set. To then reduce the data set to $n$ dimensions, the data set is projected on to the hyperplane defined by $n$ PCs.
 
 \subsection*{5(b)}
-\hl{TODO}
+
+The \emph{Explained Variance Ratio} is the proportion of the variance accounted for in each PC. 
 
 \subsection*{5(c)}
-\hl{TODO}
+
+The \emph{kernel trick} is the observation that a valid (\emph{Mercer Theorem}) \emph{kernel function} $\mathcal{K}(x_i, x_j)$ is capable of finding the dot product of $\phi(x_i)$ and $\phi(x_j)$ without having to evaluate $\phi(x_i)$ or $\phi(x_j)$. This \emph{trick} enables \emph{Support Vector Machines} to efficiently classify non-linear data.
+
+Similarly, \emph{Kernel PCA}, uses the \emph{kernel trick} to perform non-linear projections for \emph{dimensionality reduction}.
 
 \subsection*{5(d)}
-\hl{TODO}
+\emph{Locally Linear Embedding}, LLE, is ...
 
 \subsection*{5(e)}
 \hl{TODO}
