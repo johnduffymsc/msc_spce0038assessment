@@ -328,11 +328,31 @@ In \emph{supervised learning}, a \emph{classification} problem is one which requ
 
 % Subsection 4(a)
 \subsection*{4(a)}
-\hl{TODO}
+\emph{TensorFlow} uses the idea of describing calculation in terms of \emph{computational graphs}. These \emph{computational graphs} are then \emph{executed} to perform the calculation. 
+
+The \emph{computational graphs} are created by users and can be broken up into chunks. These chunks can then be \emph{executed} on CPUs and GPUs using highly optimised C++ code. This chunking of calculation also facilitates \emph{parallel} execution. 
 
 % Subsection 4(b)
 \subsection*{4(b)}
-\hl{TODO}
+In \emph{TensorFlow} a \emph{tensor} is usually a multi-dimensional array.
+
+A TensorFlow \emph{Constant} type is, as the name would suggest, a \emph{tensor} whose values cannot be changed.
+
+A TensorFlow \emph{Variable} type is a \emph{tensor} whose values can be changed, similar to \emph{variables} of other languages/libraries.
+
+Examples of how to create both types of \emph{tensors} are below:
+
+\begin{verbatim}
+import  tensorflow as tf
+
+unchangeable_tensor = tf.constant([0, 1, 2, 3, 4])
+
+changeable_tensor = tf.variable([0, 1, 2, 3, 4])
+\end{verbatim}
+
+Any operation that attempts to change the values of \emph{unchangeable\_tensor} will result in an \emph{exception} being thrown.
+
+
 
 % Subsection 4(c)
 \subsection*{4(c)}
