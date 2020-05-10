@@ -377,11 +377,23 @@ with tf.Session() as sess:
 
 % Subsection 4(d)
 \subsection*{4(d)}
-\hl{TODO}
+Although it would possible to calculate the gradients at each node in a \emph{computational graph}, this would be tedious and for large \emph{neural networks} almost impossible. This is where TensorFlow's {Autodiff} comes in.
+
+For example, \emph{Autodiff} can be used to calculate the gradients of a function with respect to $\theta$, and subsequently used, as follows: 
+
+\begin{verbatim}
+gradients = tf.gradients(function, [theta])[0]
+
+training_op = tf.assign(theta, theta - learning_rate * gradients)
+\end{verbatim}
+
+The advantage of using \emph{Autodiff} is that it makes it possible to determine the gradients of large networks that would be almost impossible to determine otherwise.
 
 % Subsection 4(e)
 \subsection*{4(e)}
-\hl{TODO}
+The machine learning problem the code of Question 4(e) is trying to solve is \emph{Linear Regression}.
+
+The optimisation algorithm being used is \emph{Gradient Descent}.
 
 % Subsection 4(f)
 \subsection*{4(f)}
