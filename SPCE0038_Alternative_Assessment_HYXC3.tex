@@ -338,7 +338,7 @@ In \emph{TensorFlow} a \emph{tensor} is usually a multi-dimensional array.
 
 A TensorFlow \emph{Constant} type is, as the name would suggest, a \emph{tensor} whose values cannot be changed.
 
-A TensorFlow \emph{Variable} type is a \emph{tensor} whose values can be changed, similar to \emph{variables} of other languages/libraries.
+A TensorFlow \emph{Variable} type is a \emph{tensor} whose values can be changed.
 
 Examples of how to create both types of \emph{tensors} are below:
 
@@ -347,16 +347,33 @@ import  tensorflow as tf
 
 unchangeable_tensor = tf.constant([0, 1, 2, 3, 4])
 
-changeable_tensor = tf.variable([0, 1, 2, 3, 4])
+changeable_tensor = tf.Variable([0, 1, 2, 3, 4])
 \end{verbatim}
 
 Any operation that attempts to change the values of \emph{unchangeable\_tensor} will result in an \emph{exception} being thrown.
 
-
+\textbf{NB} ``Variable" has a capitalised first letter because \emph{Variable} is a constructor, whereas \emph{constant} is not.
 
 % Subsection 4(c)
 \subsection*{4(c)}
-\hl{TODO}
+A TensorFlow \emph{Placeholder} is a location where a \emph{tensor} will be \emph{fed} at a later time. This is useful in loop constructs where the \emph{tensor(s)} will change with each loop iteration.
+
+For example, in the code of Question 4f (extract below) the tensors \emph{X\_batch} and \emph{y\_batch} change on each loop iteration, and are \emph{fed} to \emph{sess.run()} via the dictionary \emph{feed\_dict}.
+
+\begin{verbatim}
+X = tf.placeholder(tf.float32, shape=(None, n + 1), name="X")
+y = tf.placeholder(tf.float32, shape=(None, 1), name="y")
+
+...
+
+with tf.Session() as sess:
+    sess.run(init)
+    for epoch in range(n_epochs):
+        for batch_index in range(n_batches):
+            X_batch, y_batch = fetch_batch(epoch, batch_index, batch_size)
+            sess.run(training_op, feed_dict={X: X_batch, y: y_batch})
+    best_theta = theta.eval()
+\end{verbatim}
 
 % Subsection 4(d)
 \subsection*{4(d)}
@@ -368,7 +385,7 @@ Any operation that attempts to change the values of \emph{unchangeable\_tensor} 
 
 % Subsection 4(f)
 \subsection*{4(f)}
-See Python Jupyter Notebook on following 3 pages.
+See the Python Jupyter Notebook on following 3 pages.
 
 %\begin{listing}
 %\inputminted[linenos]{python}{question_4f.py}
