@@ -393,13 +393,13 @@ Similarly, \emph{Kernel PCA}, uses the \emph{kernel trick} to perform non-linear
 Reconstruct $x_i$ as a linear function of it's $k$ nearest neighbours:
 
 \begin{equation}
-\mathbf{W} = \argmin_{\mathbf{W}} \sum_{i=1}^m\left(\mathbf{x}^{(i)} - \sum_{j=1}^m w_{i, j} \mathbf{x}^{(j)}\right)^2
+\mathbf{W} = \argmin_{\mathbf{W}}\sum_{i=1}^{m}\left(x_i - \sum_{j=1}^{m} w_{i, j}x_j\right)^2
 \end{equation}
 
 where
 
 \begin{equation}
-w_{i,j} = 0\text{ if $\mathbf{x^j}$ is not one of the $k$ nearest neighbours of $\mathbf{x^i}$}
+w_{i,j} = 0\text{ if $x_j$ is not one of the $k$ nearest neighbours of $x_i$}
 \end{equation}
 
 and where $\mathbf{W}$ describes the relationships between the \emph{training} data instances.
@@ -410,9 +410,17 @@ And normalised such that:
 \sum_{j=1}^m w_{i, j} = 1\text{ for } i = 1..m
 \end{equation}
 
+\textbf{NB} This first step finds $\mathbf{W}$ for a fixed $\mathbf{x}$.
+
 % Subsection 5(f)
 \subsection*{5(f)}
-\hl{TODO}
 
+If $z_i$ is the $d$-space equivalent to $x_i$, mapping the \emph{training} set into this $d$-dimensional space, whilst preserving the local relationships as much as possible, requires $\left(z_i - \sum_{j=1}^m w_{i, j} z_j\right)^2$ to be minimised:
+
+\begin{equation}
+\mathbf{Z} = \argmin_{\mathbf{Z}}\sum_{i=1}^{m}\left(z_i - \sum_{j=1}^{m} w_{i, j}z_j\right)^2
+\end{equation}
+
+\textbf{NB} This second step finds $\mathbf{z}$ for a fixed $\mathbf{W}$.
 
 \end{document}
