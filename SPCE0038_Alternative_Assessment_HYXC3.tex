@@ -370,7 +370,27 @@ Similarly, \emph{Kernel PCA}, uses the \emph{kernel trick} to perform non-linear
 \emph{Locally Linear Embedding}, LLE, is a method for \emph{non-linear dimensionality reduction}, NLDR. Rather than use projections, LLE measures the linear relationships between data points, and then seeks a lower dimension space which preserves these relationships the best. 
 
 \subsection*{5(e)}
-\hl{TODO}
+
+Reconstruct $x_i$ as a linear function of it's $k$ nearest neighbours:
+
+\begin{equation}
+\mathbf{W} = argmin \sum_{i=1}^m\left(\mathbf{x}^{(i)} - \sum_{j=1}^m w_{i, j} \mathbf{x}^{(j)}\right)^2
+\end{equation}
+
+where
+
+\begin{equation}
+w_{i,j} = 0\text{ if $\mathbf{x^j}$ is not one of the $k$ nearest neighbours of $\mathbf{x^i}$}
+\end{equation}
+
+and where $\mathbf{W}$ describes the relationships between the \emph{training} data instances.
+
+And normalised such that:
+
+\begin{equation}
+\sum_{j=1}^m w_{i, j} = 1\text{ for } i = 1..m
+\end{equation}
+
 
 \subsection*{5(f)}
 \hl{TODO}
