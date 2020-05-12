@@ -314,12 +314,79 @@ Given \emph{training} data with associated \emph{labels}, e.g. this image (data)
 
 In \emph{supervised learning}, a \emph{regression} problem is one which requires the output to be a numerical value, e.g. a share price.
 
-In \emph{supervised learning}, a \emph{classification} problem is one which requires the output to be a \emph{class label}, e.g. this image of a digit is of the number (\emph{class}) 9.
+In \emph{supervised learning}, a \emph{classification} problem is one which requires the output to be a \emph{class label}, e.g. this image of a digit is the number (\emph{class}) 9.
 
 % Subsection 3(f)
 \subsection*{3(f)}
-\hl{TODO}
+\textbf{NB} I have switched notation $k^{'} = j$ in the \emph{Softmax} function for easier Latex.
 
+Consider the generalised cost function for logistic regression given by the cross entropy
+
+\begin{equation}
+C(\Theta) = -\frac{1}{m}\sum_{i=1}^{m} \sum_{k=1}^{K}y_k^{(i)}\log\left(\hat{p}_k^{(i)}\right)
+\end{equation}
+
+where $\Theta \in \mathcal{R}^{K\times n}$ is the matrix $[\theta^{(1)}\text{  }\theta^{(2)}\text{  ...  }\theta^{(K)}]$.
+
+And, where $\hat{p}_k$ is the \emph{Softmax} function
+
+\begin{equation}
+\hat{p}_k = \frac{exp(s_k(x))}{\sum_{j=1}^K exp(s_j(x))}
+%\end{equation}
+\text{, with }
+%\begin{equation}
+s_k(x) = \left(\theta^{(k)}\right)^T x
+\end{equation}
+
+Now, consider the gradient of the cost function with respect to $\theta^{(k)}$
+
+\begin{equation}
+\nabla_{\theta^{(k)}}C(\Theta) = -\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)}\frac{1}{\hat{p}_k^{(i)}}\frac{\partial{\hat{p}_k^{(i)}}}{\partial{\theta^{(k)}}}
+\end{equation}
+\text{or}
+\begin{equation}
+\frac{\partial{C}}{\partial{\theta^{(k)}}}= -\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)}\frac{1}{\hat{p}_k^{(i)}}\frac{\partial{\hat{p}_k^{(i)}}}{\partial{\theta^{(k)}}}
+\end{equation}
+
+However
+
+\begin{align}
+%\begin{equation}
+\frac{\partial{\hat{p}_k^{(i)}}}{\partial{\theta^{(k)}}} &= \frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_k}}\frac{\partial{s_k}}{\partial{\theta^{(k)}}} +
+\frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_j}}\frac{\partial{s_j}}{\partial{\theta^{(k)}}}\\
+%\end{equation}
+%\begin{equation}
+&= \frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_k}}x + \frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_j}}x
+%\end{equation}
+\end{align}
+
+Now, consider the gradient of the \emph{Softmax} function,
+
+when $j = k$
+
+\begin{align}
+\frac{\partial\hat{p}_k}{\partial{s_k}} &= \frac{exp(s_k(x))\sum_{k=1}^K exp(s_k(x)) - exp(s_k(x))exp(s_k(x))}{\left(\sum_{k=1}^K exp(s_k(x))\right)^2}\\
+&= \hat{p}_k(1 - \hat{p}_k)\\
+\end{align}
+
+\text{when }$j \neq k$
+
+\begin{align}
+\frac{\partial\hat{p}_k}{\partial{s_j}} &= \frac{0 - exp(s_j(x))exp(s_k(x))}{\left(\sum_{j=1}^K exp(s_j(x))\right)^2}\\
+&= -\hat{p}_k\hat{p}_j
+\end{align}
+
+Substituting into equation (18)
+\begin{align}
+\frac{\partial{C}}{\partial{\theta^{(k)}}}&= -\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)}\frac{1}{\hat{p}_k^{(i)}}\frac{\partial{\hat{p}_k^{(i)}}}{\partial{\theta^{(k)}}}\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)}\frac{1}{\hat{p}_k^{(i)}}\left(\frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_k}}x^{(i)} + \frac{\partial{\hat{p}_k^{(i)}}}{\partial{s_j}}x^{(i)}\right)\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\left( y_k^{(i)}\frac{1}{\hat{p}_k^{(i)}}\hat{p}_k^{(i)}(1 - \hat{p}_k^{(i)}) - \sum_{j\neq k}^{K}y_k^{(i)}\frac{1}{\hat{p}}_j^{(i)}\hat{p}_k^{(i)}\hat{p}_j^{(i)}\right)x^{(i)}\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\left( y_k^{(i)}(1 - \hat{p}_k^{(i)}) - \sum_{j\neq k}^{K}y_k^{(i)}\hat{p}_k^{(i)}\right)x^{(i)}\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\left( y_k^{(i)} - y_k^{(i)}\hat{p}_k^{(i)} - \sum_{j\neq k}^{K}y_k^{(i)}\hat{p}_k^{(i)}\right)x^{(i)}\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\left( y_k^{(i)} - \hat{p}_k^{(i)}\sum_{k=1}^{K}y_k^{(i)}\right)x^{(i)}\\
+&=-\frac{1}{m}\sum_{i=1}^{m}\left( y_k^{(i)} - \hat{p}_k^{(i)}\right)x^{(i)}\\
+&=\frac{1}{m}\sum_{i=1}^{m}\left(\hat{p}_k^{(i)} - y_k^{(i)}\right)x^{(i)}\\
+\end{align}
 
 %
 % Question 4
